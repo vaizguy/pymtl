@@ -60,7 +60,7 @@ def verilate_model( filename, model_name, vcd_en, lint ):
   # verilator commandline template
 
   compile_cmd = ( 'verilator -cc {source} -top-module {model_name} '
-                  '--Mdir {obj_dir} -O3 {flags}' )
+                  '--Mdir {obj_dir} -O3 {flags} --debug --gdbbt' )
 
   # verilator commandline options
 
@@ -83,6 +83,7 @@ def verilate_model( filename, model_name, vcd_en, lint ):
   # create the verilator compile command
 
   compile_cmd = compile_cmd.format( **vars() )
+  print ("Compile command: {}".format("".join(compile_cmd)))
 
   # try compilation
 
